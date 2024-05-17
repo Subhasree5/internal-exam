@@ -1,0 +1,41 @@
+// c program to implement linear search//
+#include<stdio.h>
+int linearsearch(int[],int,int);
+int main()
+{
+    int a[5],n,i,key,result;
+    printf("Enter size of an array: ");
+    scanf("%d",&n);
+    printf("Enter %d elements: \n",n);
+    for(i=0;i<n;i++)
+        scanf("%d",&a[i]);
+    printf("Enter key: ");
+    scanf("%d",&key);
+    result=linearsearch(a,n,key);
+    if(result!=-1)
+        printf("Key is found at index %d",result);
+    else
+        printf("Key is not found");
+}
+int linearsearch(int a[5],int n,int key)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        if(key==a[i])
+            return i;
+    }
+    return -1;
+}
+OUTPUT:
+a)Enter size of an array: 5
+Enter 5 elements: 
+10 20 30 40 50
+Enter key: 30
+Key is found at index 2
+b) Enter size of an array: 5
+Enter 5 elements: 
+10 20 30 40 50
+Enter key: 70
+Key is not found
+=== Code Execution Successful ===
