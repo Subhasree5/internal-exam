@@ -1,0 +1,157 @@
+// BST creation and traversal techniques//
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        struct node *lchild;
+        int data;
+        struct node *rchild;
+};
+typedef struct node NODE;
+NODE* insert(NODE*,int);
+void inorder(NODE*);
+void preorder(NODE*);
+void postorder(NODE*);
+int main()
+{
+    NODE *root=NULL;
+    int choice,item;
+    while(1)
+    {
+        printf("\n MENU \n");
+        printf("1.Insert \n");
+        printf("2.Inorder traversal \n");
+        printf("3.Preorder traversal \n");
+        printf("4.Postorder traversal \n");
+        printf("5.Exit \n");
+        printf("Enter your choice: ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1: printf("Enter the element to be inserted: ");
+                    scanf("%d",&item);
+                    root=insert(root,item);
+                    break;
+            case 2: inorder(root);
+                    break;
+            case 3: preorder(root);
+                    break;
+            case 4: postorder(root);
+                    break;
+            case 5: exit(0);
+            default:    printf("Invalid choice \n");
+        }
+    }
+}
+NODE* insert(NODE *root,int item)
+{
+    if(root==NULL)
+    {
+        root=(NODE*)malloc(sizeof(NODE));
+        root->data=item;
+        root->lchild=NULL;
+        root->rchild=NULL;
+    }
+    else if(item<root->data)
+        root->lchild=insert(root->lchild,item);
+    else
+        root->rchild=insert(root->rchild,item);
+    return root;    
+}
+void inorder(NODE *root)
+{
+    if(root!=NULL)
+    {
+        inorder(root->lchild);
+        printf(" %d",root->data);
+        inorder(root->rchild);
+    }
+}
+void preorder(NODE *root)
+{
+    if(root!=NULL)
+    {
+        printf(" %d",root->data);
+        preorder(root->lchild);
+        preorder(root->rchild);
+    }    
+}
+void postorder(NODE *root)
+{
+    if(root!=NULL)
+    {
+        postorder(root->lchild);
+        postorder(root->rchild);
+        printf(" %d",root->data);
+    }
+}
+OUTPUT:
+ MENU 
+1.Insert 
+2.Inorder traversal 
+3.Preorder traversal 
+4.Postorder traversal 
+5.Exit 
+Enter your choice: 1
+Enter the element to be inserted: 30
+
+ MENU 
+1.Insert 
+2.Inorder traversal 
+3.Preorder traversal 
+4.Postorder traversal 
+5.Exit 
+Enter your choice: 1
+Enter the element to be inserted: 20
+
+ MENU 
+1.Insert 
+2.Inorder traversal 
+3.Preorder traversal 
+4.Postorder traversal 
+5.Exit 
+Enter your choice: 1
+Enter the element to be inserted: 25
+
+ MENU 
+1.Insert 
+2.Inorder traversal 
+3.Preorder traversal 
+4.Postorder traversal 
+5.Exit 
+Enter your choice: 1
+Enter the element to be inserted: 60
+
+ MENU 
+1.Insert 
+2.Inorder traversal 
+3.Preorder traversal 
+4.Postorder traversal 
+5.Exit 
+Enter your choice: 1
+Enter the element to be inserted: 70
+
+ MENU 
+1.Insert 
+2.Inorder traversal 
+3.Preorder traversal 
+4.Postorder traversal 
+5.Exit 
+Enter your choice: 1
+Enter the element to be inserted: 65
+
+ MENU 
+1.Insert 
+2.Inorder traversal 
+3.Preorder traversal 
+4.Postorder traversal 
+5.Exit 
+Enter your choice: 2
+ 20 25 30 60 65 70
+ MENU 
+1.Insert 
+2.Inorder traversal 
+3.Preorder traversal 
+4.Postorder traversal 
+5.Exit 
+Enter your choice: 
+=== Session Ended. Please Run the code again ===
